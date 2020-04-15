@@ -117,8 +117,8 @@ func serveWs(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var lastMod time.Time
-	if n, err := strconv.ParseInt(r.FormValue("lastMod"), 16, 64); err == nil {
-		lastMod = time.Unix(0, n)
+	if n, err := strconv.ParseInt(r.FormValue("lastMod"), 10, 64); err == nil {
+		lastMod = time.Unix(n, 0)
 	}
 
 	go writer(ws, lastMod)
@@ -148,7 +148,7 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 	}{
 		r.Host + r.URL.Path,
 		string(p),
-		strconv.FormatInt(lastMod.UnixNano(), 16),
+		strconv.FormatInt(lastMod.Unix(), 10),
 		filename,
 	}
 	homeTempl.Execute(w, &v)
