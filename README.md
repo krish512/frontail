@@ -7,6 +7,9 @@ Frontail is written in Go to provide a fast and easy way to stream contents of a
 
 ### Quick Start
 
+* Get requirement
+  - `go get github.com/gorilla/websocket`
+  - `go get github.com/rs/zerolog`
 * Build as `go build -o frontail main.go` or download a binary file from [Releases](https://github.com/krish512/frontail/releases) page
 * Execute in shell `frontail -p 8080 /var/log/syslog`
 * Visit [http://127.0.0.1:8080](http://127.0.0.1:8080)
